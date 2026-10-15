@@ -59,6 +59,7 @@ function run_training(df, folder_output, nn_setup_path, lr_list, n_run, n_epoch,
             @time SimpleChains.train_batched!(G, p, mlpdloss, X, SimpleChains.ADAM(lr), n_epoch; batchsize=batchsize)
             report(p)
             test = mlpdtest(Xtest, p)
+            npzwrite(joinpath(folder_output, "current_iteration.npy"), Array([test, lr, i]))
             if test_loss > test
                 npzwrite(joinpath(folder_output, "weights.npy"), p)
                 npzwrite(joinpath(folder_output, "best_test_loss.npy"), Array([test, lr, i])) # keeps track of best test loss so far (and which run it occurred)
