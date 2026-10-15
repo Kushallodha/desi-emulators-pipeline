@@ -16,6 +16,7 @@ conda activate classy_env
 pip install numpy scipy cython
 pip install classy
 pip install git+https://github.com/marcobonici/velocileptors_free.git
+pip install git+https://github.com/cosmodesi/FolpsD.git
 ```
 2. Run ```which python``` and copy the folder path (will be needed later).
 

@@ -14,7 +14,7 @@ using LinearAlgebra
 config = ArgParseSettings()
 @add_arg_table config begin
     "--emulator_type"
-    help = "Specify which emulator type to create: 'effort_velocileptors', 'effort_folps_pk', 'effort_folps_bk', 'ace', 'capse', 'mapse'."
+    help = "Specify which emulator type to create: 'effort_velocileptors', 'effort_folps_pk', 'ace', 'capse', 'mapse'."
     arg_type = String
     required = true
     "--parameters"
@@ -133,7 +133,7 @@ end
             cosmo_params = Dict("ln10^{10}A_s" => ln10As, "n_s" => ns, "h" => h, "omega_b" => ombh2, "omega_cdm" => omch2, 
                                 "w0_fld" => w0, "wa_fld" => wa, "use_ppf" => "yes", "fluid_equation_of_state" => "CLP", "cs2_fld" => 1, "Omega_Lambda" => 0, "Omega_scf" => 0,
                                 "Neff" => 3.044, "N_ncdm" => N_ncdm, "m_ncdm" => m_ncdm)
-            if emulator_type in ["effort_velocileptors", "effort_folps", "ace"]
+            if emulator_type in ["effort_velocileptors", "effort_folps_pk", "ace"]
                 cosmo_params["output"] = "mPk"
                 cosmo_params["z_pk"] = string(z)
                 cosmo_params["P_k_max_h/Mpc"] = 20
