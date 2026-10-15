@@ -14,7 +14,7 @@ using LinearAlgebra
 config = ArgParseSettings()
 @add_arg_table config begin
     "--emulator_type"
-    help = "Specify which emulator type to create: 'effort_velocileptors', 'effort_folps_pk', 'ace', 'capse', 'mapse'."
+    help = "Specify which emulator type to create: 'effort_velocileptors', 'ace', 'capse', 'mapse'."
     arg_type = String
     required = true
     "--parameters"
@@ -180,14 +180,6 @@ end
                     end
                 end
 
-            #elseif emulator_type == "effort_folps_pk"
-            #end
-
-            #elseif emulator_type == "effort_folps_bk"
-            #end
-
-
-
             elseif emulator_type == "ace"
                 # Computes background quantities (sigma8, sigma8(z), rs_drag, H(z), r(z), D(z), f(z))
                 # and saves outputs in either ln10As or sigma8 basis depending what inputs are
@@ -244,9 +236,9 @@ end
                     @error "There are nan values!"
                 else
                     mkdir(rand_str)
+                    npzwrite(rand_str * "/kv.npy", k_grid)
                     npzwrite(rand_str * "/pk_cb.npy", Pcb)
                     npzwrite(rand_str * "/pk_mm.npy", Pmm)
-                    npzwrite(rand_str * "/k.npy", k_grid)
                     cosmo_dict_full = copy(cosmo_dict)
                     cosmo_dict_full["ln10As"] = 3.044 # these are not originally in the dictionary
                     cosmo_dict_full["ns"] = 0.9649
