@@ -4,7 +4,6 @@ using DataFrames
 using Effort
 using ArgParse
 using DelimitedFiles
-using Mapse
 using Random
 using LinearAlgebra
 using Statistics
