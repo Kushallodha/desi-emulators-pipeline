@@ -1,12 +1,12 @@
 # desi-emulators-pipeline
 
-This repository contains the files and scripts necessary for training neural network emulators on the NERSC supercomputer. There are four folders `Effort`, `Capse`, `ACE`, `Mapse` each containing Julia codes, job scripts, supporting files and notebooks.
+This repository contains the files necessary for training neural network emulators on the NERSC supercomputer.
 
 Important: Many of the settings listed in the current versions of the codes/job scripts are not final/optimized fully (things like the number of training samples, emulator hyperparameters, slurm job settings may need to be adjusted depending on the accuracy/time constraints for the user training the emulator). It is recommend to start out by training an emulator with fewer samples to ensure that everything works and then proceed to larger cases. It is also the user's responsibility to ensure the emulator is free of potential bugs/problems by comparing the emulator outputs with the theory code of interest. (Note that the default neural network architecture has 5 layers of 64 neurons per layer. This may need to be increased/decreased depending on the desired accuracy/runtime tradeoff).
 
 ## Installation
 
-First, we must create an environment which permits the use of PyCall within Julia. `cd` to your preferred directory and run the following steps:
+First, we must create an environment which permits the use of PyCall within Julia. `cd` to your preferred directory and run the following steps. The second block of instructions is for installing CAMB and CosmoRec which is more involved – please report any problems/bugs to me!
 
 1. 
 ```
@@ -18,11 +18,40 @@ pip install classy
 pip install git+https://github.com/marcobonici/velocileptors_free.git
 pip install git+https://github.com/cosmodesi/FolpsD.git
 ```
-2. Run ```which python``` and copy the folder path (will be needed later).
+```
+git clone https://github.com/cmbant/CosmoRec.git
+cd CosmoRec
 
-3. Open a new terminal and clone this repository `git clone https://github.com/jgmorawetz/desi-emulators-pipeline.git`.
+cat << 'EOF' >> Development/Simple_routines/parser.cpp
+template int parser_read<int>(const struct file_content&, string, int&, bool&, bool);
+template int parser_read<double>(const struct file_content&, string, double&, bool&, bool);
+template int parser_read<string>(const struct file_content&, string, string&, bool&, bool);
+EOF
 
-4. `cd` to the folder `desi-emulators-pipeline`, and modify the script (can use `vi` for this) `install_julia_environment.jl` by pasting the directory path that was copied from step 2 into the line `ENV["PYTHON"] = `. This step initializes the Julia environment and ensures the necessary dependencies are satisfied (the `Project.toml` and `Manifest.toml` files needed are already located in the folder). Run the following commands:
+sed -i 's/$(CC) $(LXXFLAGS) -L. -lCosmoRec $(LIBS) main.o -o CosmoRec/$(CC) $(LXXFLAGS) main.o -o CosmoRec -L. -lCosmoRec $(LIBS)/' Makefile.in
+
+make clean
+make
+cd ..
+
+git clone https://github.com/cmbant/CAMB.git
+cd CAMB
+
+CR_PATH=$(realpath ../CosmoRec) 
+
+sed -i 's/RECOMBINATION_FILES ?= recfast cosmorec/RECOMBINATION_FILES = recfast cosmorec/' fortran/Makefile_main
+sed -i "s|COSMOREC_PATH ?=../../CosmoRec/|COSMOREC_PATH = $CR_PATH|" fortran/Makefile_main
+sed -i 's/$(GSoL_LINK)/$(GSL_LINK)/' fortran/Makefile_main
+
+pip install .
+cd ..
+```
+
+4. Run ```which python``` and copy the folder path (will be needed later).
+
+5. Open a new terminal and clone this repository `git clone https://github.com/jgmorawetz/desi-emulators-pipeline.git`.
+
+6. `cd` to the folder `desi-emulators-pipeline`, and modify the script (can use `vi` for this) `install_julia_environment.jl` by pasting the directory path that was copied from step 2 into the line `ENV["PYTHON"] = `. This step initializes the Julia environment and ensures the necessary dependencies are satisfied (the `Project.toml` and `Manifest.toml` files needed are already located in the folder). Run the following commands:
 ```
 module load julia
 julia install_julia_environment.jl
