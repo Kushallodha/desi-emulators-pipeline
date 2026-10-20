@@ -41,24 +41,24 @@ batchsize=1024
 learning_rates="1e-4,3e-5,1e-5,3e-6,1e-6,3e-7"
 
 
-cp "${home_dir}/class_velocileptors/supporting_files/biascombination.py"    "${save_directory_before}/biascombination.py"
-cp "${home_dir}/class_velocileptors/supporting_files/biascombination.jl"    "${save_directory_before}/biascombination.jl"
-cp "${home_dir}/class_velocileptors/supporting_files/jacbiascombination.py" "${save_directory_before}/jacbiascombination.py"
-cp "${home_dir}/class_velocileptors/supporting_files/jacbiascombination.jl" "${save_directory_before}/jacbiascombination.jl"
+cp "${home_dir}/class_velocileptors/supporting_files/Effort/biascombination.py"    "${save_directory_before}/biascombination.py"
+cp "${home_dir}/class_velocileptors/supporting_files/Effort/biascombination.jl"    "${save_directory_before}/biascombination.jl"
+cp "${home_dir}/class_velocileptors/supporting_files/Effort/jacbiascombination.py" "${save_directory_before}/jacbiascombination.py"
+cp "${home_dir}/class_velocileptors/supporting_files/Effort/jacbiascombination.jl" "${save_directory_before}/jacbiascombination.jl"
 
-cp "${home_dir}/class_velocileptors/supporting_files/stochmodel_${multipole}.py" "${save_directory_before}/stochmodel.py"
-cp "${home_dir}/class_velocileptors/supporting_files/stochmodel_${multipole}.jl" "${save_directory_before}/stochmodel.jl"
+cp "${home_dir}/class_velocileptors/supporting_files/Effort/stochmodel_${multipole}.py" "${save_directory_before}/stochmodel.py"
+cp "${home_dir}/class_velocileptors/supporting_files/Effort/stochmodel_${multipole}.jl" "${save_directory_before}/stochmodel.jl"
 
 if [ "${component}" = "loop" ]; then
-    cp "${home_dir}/class_velocileptors/supporting_files/postprocessing_loop.py" "${save_directory}/postprocessing.py"
-    cp "${home_dir}/class_velocileptors/supporting_files/postprocessing_loop.jl" "${save_directory}/postprocessing.jl"
+    cp "${home_dir}/class_velocileptors/supporting_files/Effort/postprocessing_loop.py" "${save_directory}/postprocessing.py"
+    cp "${home_dir}/class_velocileptors/supporting_files/Effort/postprocessing_loop.jl" "${save_directory}/postprocessing.jl"
 else
-    cp "${home_dir}/class_velocileptors/supporting_files/postprocessing.py"      "${save_directory}/postprocessing.py"
-    cp "${home_dir}/class_velocileptors/supporting_files/postprocessing.jl"      "${save_directory}/postprocessing.jl"
+    cp "${home_dir}/class_velocileptors/supporting_files/Effort/postprocessing.py"      "${save_directory}/postprocessing.py"
+    cp "${home_dir}/class_velocileptors/supporting_files/Effort/postprocessing.jl"      "${save_directory}/postprocessing.jl"
 fi
 
-cp "${home_dir}/class_velocileptors/supporting_files/stochmodel_${multipole}.py" "${save_directory}/stochmodel.py"
-cp "${home_dir}/class_velocileptors/supporting_files/stochmodel_${multipole}.jl" "${save_directory}/stochmodel.jl"
+cp "${home_dir}/class_velocileptors/supporting_files/Effort/stochmodel_${multipole}.py" "${save_directory}/stochmodel.py"
+cp "${home_dir}/class_velocileptors/supporting_files/Effort/stochmodel_${multipole}.jl" "${save_directory}/stochmodel.jl"
 
 cp "${home_dir}/k.npy" "${save_directory}/k.npy"
 

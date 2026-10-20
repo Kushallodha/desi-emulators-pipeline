@@ -32,5 +32,8 @@ n_run=30
 batchsize=1024
 learning_rates="1e-4,3e-5,1e-5,3e-6,1e-6,3e-7"
 
+cp "${home_dir}/class_velocileptors/supporting_files/ACE/postprocessing.py"      "${save_directory}/postprocessing.py"
+cp "${home_dir}/class_velocileptors/supporting_files/ACE/postprocessing.jl"      "${save_directory}/postprocessing.jl"
+
 
 julia -t $SLURM_CPUS_PER_TASK class_velocileptors/training_ace.jl --basis="$basis" --dataset_directory="$dataset_directory" --save_directory="$save_directory" --network_architecture_path="$network_architecture_path" --batchsize=$batchsize --n_epoch=$n_epoch --n_run=$n_run --learning_rates="$learning_rates"

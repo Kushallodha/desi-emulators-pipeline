@@ -41,27 +41,27 @@ batchsize=1024
 learning_rates="1e-4,3e-5,1e-5,3e-6,1e-6,3e-7"
 
 
-cp "${home_dir}/class_folps/supporting_files/biascombination.py"    "${save_directory_before}/biascombination.py"
-cp "${home_dir}/class_folps/supporting_files/biascombination.jl"    "${save_directory_before}/biascombination.jl"
-cp "${home_dir}/class_folps/supporting_files/jacbiascombination.py" "${save_directory_before}/jacbiascombination.py"
-cp "${home_dir}/class_folps/supporting_files/jacbiascombination.jl" "${save_directory_before}/jacbiascombination.jl"
+cp "${home_dir}/class_folps/supporting_files/Effort/biascombination.py"    "${save_directory_before}/biascombination.py"
+cp "${home_dir}/class_folps/supporting_files/Effort/biascombination.jl"    "${save_directory_before}/biascombination.jl"
+cp "${home_dir}/class_folps/supporting_files/Effort/jacbiascombination.py" "${save_directory_before}/jacbiascombination.py"
+cp "${home_dir}/class_folps/supporting_files/Effort/jacbiascombination.jl" "${save_directory_before}/jacbiascombination.jl"
 
-cp "${home_dir}/class_folps/supporting_files/stochmodel_${multipole}.py" "${save_directory_before}/stochmodel.py"
-cp "${home_dir}/class_folps/supporting_files/stochmodel_${multipole}.jl" "${save_directory_before}/stochmodel.jl"
+cp "${home_dir}/class_folps/supporting_files/Effort/stochmodel_${multipole}.py" "${save_directory_before}/stochmodel.py"
+cp "${home_dir}/class_folps/supporting_files/Effort/stochmodel_${multipole}.jl" "${save_directory_before}/stochmodel.jl"
 
 if [ "${component}" = "11" ]; then
-    cp "${home_dir}/class_folps/supporting_files/postprocessing_11.py" "${save_directory}/postprocessing.py"
-    cp "${home_dir}/class_folps/supporting_files/postprocessing_11.jl" "${save_directory}/postprocessing.jl"
+    cp "${home_dir}/class_folps/supporting_files/Effort/postprocessing_11.py" "${save_directory}/postprocessing.py"
+    cp "${home_dir}/class_folps/supporting_files/Effort/postprocessing_11.jl" "${save_directory}/postprocessing.jl"
 elif [ "${component}" = "loop" ]; then
-    cp "${home_dir}/class_folps/supporting_files/postprocessing_loop.py" "${save_directory}/postprocessing.py"
-    cp "${home_dir}/class_folps/supporting_files/postprocessing_loop.jl" "${save_directory}/postprocessing.jl"
+    cp "${home_dir}/class_folps/supporting_files/Effort/postprocessing_loop.py" "${save_directory}/postprocessing.py"
+    cp "${home_dir}/class_folps/supporting_files/Effort/postprocessing_loop.jl" "${save_directory}/postprocessing.jl"
 else
-    cp "${home_dir}/class_folps/supporting_files/postprocessing_ct.py" "${save_directory}/postprocessing.py"
-    cp "${home_dir}/class_folps/supporting_files/postprocessing_ct.jl" "${save_directory}/postprocessing.jl"
+    cp "${home_dir}/class_folps/supporting_files/Effort/postprocessing_ct.py" "${save_directory}/postprocessing.py"
+    cp "${home_dir}/class_folps/supporting_files/Effort/postprocessing_ct.jl" "${save_directory}/postprocessing.jl"
 fi
 
-cp "${home_dir}/class_folps/supporting_files/stochmodel_${multipole}.py" "${save_directory}/stochmodel.py"
-cp "${home_dir}/class_folps/supporting_files/stochmodel_${multipole}.jl" "${save_directory}/stochmodel.jl"
+cp "${home_dir}/class_folps/supporting_files/Effort/stochmodel_${multipole}.py" "${save_directory}/stochmodel.py"
+cp "${home_dir}/class_folps/supporting_files/Effort/stochmodel_${multipole}.jl" "${save_directory}/stochmodel.jl"
 
 cp "${home_dir}/k.npy" "${save_directory}/k.npy"
 
