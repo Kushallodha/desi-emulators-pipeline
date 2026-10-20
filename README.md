@@ -47,11 +47,11 @@ pip install .
 cd ..
 ```
 
-4. Run ```which python``` and copy the folder path (will be needed later).
+2. Run ```which python``` and copy the folder path (will be needed later).
 
-5. Open a new terminal and clone this repository `git clone https://github.com/jgmorawetz/desi-emulators-pipeline.git`.
+3. Open a new terminal and clone this repository `git clone https://github.com/jgmorawetz/desi-emulators-pipeline.git`.
 
-6. `cd` to the folder `desi-emulators-pipeline`, and modify the script (can use `vi` for this) `install_julia_environment.jl` by pasting the directory path that was copied from step 2 into the line `ENV["PYTHON"] = `. This step initializes the Julia environment and ensures the necessary dependencies are satisfied (the `Project.toml` and `Manifest.toml` files needed are already located in the folder). Run the following commands:
+4. `cd` to the folder `desi-emulators-pipeline`, and modify the script (can use `vi` for this) `install_julia_environment.jl` by pasting the directory path that was copied from step 2 into the line `ENV["PYTHON"] = `. This step initializes the Julia environment and ensures the necessary dependencies are satisfied (the `Project.toml` and `Manifest.toml` files needed are already located in the folder). Run the following commands:
 ```
 module load julia
 julia install_julia_environment.jl
