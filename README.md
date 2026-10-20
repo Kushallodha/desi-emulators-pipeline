@@ -63,7 +63,7 @@ There are three folders currently `class_velocileptors`, `class_folps` and `camb
 
 ## Codes and Job Scripts
 
-Each of the above folders contains four main codes and job scripts: `data_generation` and `training` (with .jl and .sh extensions for each). The data generation is responsible for actually generating for samples that will be used for the training, while the training actually optimizes the neural networks. We briefly review the necessary settings for each:
+Each of the above folders contains four main codes and job scripts: `data_generation` and `training` (with .jl and .sh extensions for each). The data generation is responsible for actually generating for samples that will be used for the training, while the training actually optimizes the neural networks. Note that all of these must be run from the emulator home directory in order to import packages/scripts correctly! We briefly review the necessary settings for each:
 
 1. `data_generation.jl` – This code creates the data samples used to train the emulators. Comments are provided throughout explaining it.
 
